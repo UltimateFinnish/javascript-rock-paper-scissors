@@ -1,9 +1,8 @@
-let playerSelection = prompt("Rock, paper or scissors.");
-playerSelection = playerSelection.toLowerCase();
+
 let computerSelection;
 let playerWins = 0;
 let computerWins = 0;
-
+let playerSelection;
 
 function computerPlay(){
     let RPS = ['rock', 'paper', 'scissors']; // Puts Rock, Paper and scissors into an array.
@@ -11,9 +10,9 @@ function computerPlay(){
     return computerSelection;
 }
 
-playRound(playerSelection, computerSelection);
-
 function playRound() {
+playerSelection = prompt("Rock, paper or scissors.");
+playerSelection = playerSelection.toLowerCase();
 computerSelection = computerPlay(); // Grabs a value from function computerPlay and adds it into variable computerSelection
 console.log(computerSelection);
 console.log(playerSelection);
@@ -47,13 +46,19 @@ if (playerSelection == computerSelection) { //Checks if both chose the same and 
 }
 }
 
-console.log(playerWins);
-console.log(computerWins);
 
 function game() {
-    for (i = 1; i < 5; i++){
-        playRound();
+    for (i = 0; i < 5; i++){
+        playRound(playerSelection, computerSelection);
         
+    }
+    if (playerWins == computerWins) {
+        alert(`It's a complete tie! Try again to see if you can beat the computer next time! Your wins: ${playerWins}. Computer's wins: ${computerWins}`);
+    } else if (playerWins > computerWins) {
+        alert(`You won the whole game! Good job! Your wins: ${playerWins}. Computer's wins: ${computerWins}`);
+    } else {
+        alert(`Oh no! You lost! Better luck next time! Your wins: ${playerWins}. Computer's wins: ${computerWins}`);
     }
 }
 
+game();
