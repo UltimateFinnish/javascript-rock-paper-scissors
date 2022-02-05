@@ -1,6 +1,9 @@
 let playerSelection = prompt("Rock, paper or scissors.");
 playerSelection = playerSelection.toLowerCase();
 let computerSelection;
+let playerWins = 0;
+let computerWins = 0;
+
 
 function computerPlay(){
     let RPS = ['rock', 'paper', 'scissors']; // Puts Rock, Paper and scissors into an array.
@@ -20,21 +23,37 @@ if (playerSelection == computerSelection) { //Checks if both chose the same and 
 } else if (playerSelection == 'rock') { // Checks what the computer chose after checking what the player chose to determine the winner
     if ( computerSelection == 'paper') {
         alert('You lose! Paper beats Rock!');
+        computerWins++;
     } else {
         alert('You win! Rock beats scissors!');
+        playerWins++;
     }
 } else if (playerSelection == 'paper'){ // Checks what the computer chose after checking what the player chose to determine the winner
-    if (computerSelection == 'rock'){
-        alert('You win! Paper beats Rock!');
-    } else {
+    if (computerSelection == 'scissors'){
         alert('You lose! Scissors beat paper!');
+        computerWins++;
+    } else {
+        alert('You win! Paper beats Rock!');
+        playerWins++;
     }
 } else if (playerSelection == 'scissors'){ // Checks what the computer chose after checking what the player chose to determine the winner
     if (computerSelection == 'rock') {
         alert('You lose! Rock beats scissors!');
+        computerWins++;
     } else {
         alert('You win! Scissors beats Paper!')
+        playerWins++;
     }
 }
+}
+
+console.log(playerWins);
+console.log(computerWins);
+
+function game() {
+    for (i = 1; i < 5; i++){
+        playRound();
+        
+    }
 }
 
