@@ -1,8 +1,8 @@
 
 let computerSelection;
+let playerSelection;
 let playerWins = 0;
 let computerWins = 0;
-let playerSelection;
 
 function computerPlay(){
     let RPS = ['rock', 'paper', 'scissors']; // Puts Rock, Paper and scissors into an array.
@@ -48,17 +48,17 @@ if (playerSelection == computerSelection) { //Checks if both chose the same and 
 
 
 function game() {
-    for (i = 0; i < 5; i++){
+    for (i = 0; i < 5; i++){ //Loops 5 rounds of function playRound();
         playRound(playerSelection, computerSelection);
         
     }
-    if (playerWins == computerWins) {
+    if (playerWins == computerWins) { // If a tie -
         alert(`It's a complete tie! Try again to see if you can beat the computer next time! Your wins: ${playerWins}. Computer's wins: ${computerWins}`);
-    } else if (playerWins > computerWins) {
+    } else if (playerWins > computerWins) { // If player has more wins than computer
         alert(`You won the whole game! Good job! Your wins: ${playerWins}. Computer's wins: ${computerWins}`);
-    } else {
+    } else {    //If computer has more wins than player
         alert(`Oh no! You lost! Better luck next time! Your wins: ${playerWins}. Computer's wins: ${computerWins}`);
     }
 }
 
-game();
+game(); // Calls the game
