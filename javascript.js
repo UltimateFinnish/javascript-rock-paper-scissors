@@ -1,4 +1,5 @@
 const playerSelection = prompt("Rock, paper or scissors.");
+let computerSelection;
 
 function computerPlay(){
     let RPS = ['Rock', 'Paper', 'Scissors']; // Puts Rock, Paper and scissors into an array.
@@ -6,9 +7,17 @@ function computerPlay(){
     return computerSelection;
 }
 
-playRound();
+playRound(playerSelection, computerSelection);
 
-function playRound(playerSelection, computerSelection) {
+function playRound() {
 computerSelection = computerPlay(); // Grabs a value from function computerPlay and adds it into variable computerSelection
 console.log(computerSelection);
+console.log(playerSelection);
+if (playerSelection == computerSelection) {
+    alert('It\'s a tie!');
+} else {
+    if
 }
+
+}
+
