@@ -11,38 +11,52 @@ function computerPlay(){
 }
 
 function playRound() {
-playerSelection = prompt("Rock, paper or scissors.");
-playerSelection = playerSelection.toLowerCase();
-computerSelection = computerPlay(); // Grabs a value from function computerPlay and adds it into variable computerSelection
-console.log(computerSelection);
-console.log(playerSelection);
+    if (playerWins == 5 || computerWins == 5) {
+        alert('One of you already won!');
+    } else {
+    computerSelection = computerPlay(); // Grabs a value from function computerPlay and adds it into variable computerSelection
 
-if (playerSelection == computerSelection) { //Checks if both chose the same and got a tie
-    alert('It\'s a tie!');
-} else if (playerSelection == 'rock') { // Checks what the computer chose after checking what the player chose to determine the winner
-    if ( computerSelection == 'paper') {
-        alert('You lose! Paper beats Rock!');
-        computerWins++;
-    } else {
-        alert('You win! Rock beats scissors!');
-        playerWins++;
+    if (playerSelection == computerSelection) { //Checks if both chose the same and got a tie
+        alert('It\'s a tie!');
+    } else if (playerSelection == 'rock') { // Checks what the computer chose after checking what the player chose to determine the winner
+        if ( computerSelection == 'paper') {
+            alert('You lose! Paper beats Rock!');
+            computerWins++;
+        } else {
+            alert('You win! Rock beats scissors!');
+            playerWins++;
+        }
+    } else if (playerSelection == 'paper'){ // Checks what the computer chose after checking what the player chose to determine the winner
+        if (computerSelection == 'scissors'){
+           alert('You lose! Scissors beat paper!');
+           computerWins++;
+        } else {
+           alert('You win! Paper beats Rock!');
+            playerWins++;
+       }
+    } else if (playerSelection == 'scissors'){ // Checks what the computer chose after checking what the player chose to determine the winner
+       if (computerSelection == 'rock') {
+           alert('You lose! Rock beats scissors!');
+           computerWins++;
+       } else {
+           alert('You win! Scissors beats Paper!')
+           playerWins++;
+       }
     }
-} else if (playerSelection == 'paper'){ // Checks what the computer chose after checking what the player chose to determine the winner
-    if (computerSelection == 'scissors'){
-        alert('You lose! Scissors beat paper!');
-        computerWins++;
+}
+
+document.getElementById('playerScore').innerHTML = 'Player Wins: ' + playerWins;
+document.getElementById('computerScore').innerHTML = 'Computer Wins: ' + computerWins;
+
+if (playerWins == 1 || computerWins == 1) {
+    if (playerWins == 1) {
+        const winner = document.createElement('div');
+        winner.textContent = 'You are the winner!';
+        container.appendChild(winner);
     } else {
-        alert('You win! Paper beats Rock!');
-        playerWins++;
-    }
-} else if (playerSelection == 'scissors'){ // Checks what the computer chose after checking what the player chose to determine the winner
-    if (computerSelection == 'rock') {
-        alert('You lose! Rock beats scissors!');
-        computerWins++;
-    } else {
-        alert('You win! Scissors beats Paper!')
-        playerWins++;
-    }
+        const winner = document.createElement('div');
+        winner.textContent = 'Computer wins!';
+        container.appendChild(winner);    }
 }
 }
 
@@ -53,12 +67,26 @@ function game() {
         
     }
     if (playerWins == computerWins) { // If a tie -
-        alert(`It's a complete tie! Try again to see if you can beat the computer next time! Your wins: ${playerWins}. Computer's wins: ${computerWins}`);
+        alert(`It's a complete tie! Try again to see if you can beat the computer next time! \nYour wins: ${playerWins}. \nComputer's wins: ${computerWins}`);
     } else if (playerWins > computerWins) { // If player has more wins than computer
-        alert(`You won the whole game! Good job! Your wins: ${playerWins}. Computer's wins: ${computerWins}`);
+        alert(`You won the whole game! Good job! \nYour wins: ${playerWins}. \nComputer's wins: ${computerWins}`);
     } else {    //If computer has more wins than player
-        alert(`Oh no! You lost! Better luck next time! Your wins: ${playerWins}. Computer's wins: ${computerWins}`);
+        alert(`Oh no! You lost! Better luck next time! \nYour wins: ${playerWins}. \nComputer's wins: ${computerWins}`);
     }
 }
 
-game(); // Calls the game
+
+rockbtn.addEventListener('click', function() {
+    playerSelection = 'rock';
+    playRound();
+});
+
+paperbtn.addEventListener('click', function() {
+    playerSelection = 'paper';
+    playRound();
+});
+
+scissorsbtn.addEventListener('click', function() {
+    playerSelection = 'scissors';
+    playRound();
+});
