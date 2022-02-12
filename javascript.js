@@ -4,6 +4,22 @@ let playerSelection;
 let playerWins = 0;
 let computerWins = 0;
 
+rockbtn.addEventListener('click', function() {
+    playerSelection = 'rock';
+    playRound();
+});
+
+paperbtn.addEventListener('click', function() {
+    playerSelection = 'paper';
+    playRound();
+});
+
+scissorsbtn.addEventListener('click', function() {
+    playerSelection = 'scissors';
+    playRound();
+});
+
+
 function computerPlay(){
     let RPS = ['rock', 'paper', 'scissors']; // Puts Rock, Paper and scissors into an array.
     computerSelection = RPS[Math.floor(Math.random() * RPS.length)];    //Adds a random string from RPS-array to computerSelection
@@ -43,25 +59,23 @@ function playRound() {
            playerWins++;
        }
     }
-}
 
 document.getElementById('playerScore').innerHTML = 'Player Wins: ' + playerWins;
 document.getElementById('computerScore').innerHTML = 'Computer Wins: ' + computerWins;
 
-if (playerWins == 1 || computerWins == 1) {
-    if (playerWins == 1) {
-        const winner = document.createElement('div');
-        winner.textContent = 'You are the winner!';
-        container.appendChild(winner);
+}
+
+if (playerWins == 5 || computerWins == 5) {
+    if (playerWins == 5) {
+        document.getElementById('theWinner').innerHTML = 'You are the winner!';
     } else {
-        const winner = document.createElement('div');
-        winner.textContent = 'Computer wins!';
-        container.appendChild(winner);    }
+        document.getElementById('theWinner').innerHTML = 'The computer wins!'
+    }
 }
 }
 
-
-function game() {
+// NOT NEEDED ANYMORE! (PLAYS ONLY A 5 ROUND GAME!)
+/* function game() {
     for (i = 0; i < 5; i++){ //Loops 5 rounds of function playRound();
         playRound(playerSelection, computerSelection);
         
@@ -73,20 +87,4 @@ function game() {
     } else {    //If computer has more wins than player
         alert(`Oh no! You lost! Better luck next time! \nYour wins: ${playerWins}. \nComputer's wins: ${computerWins}`);
     }
-}
-
-
-rockbtn.addEventListener('click', function() {
-    playerSelection = 'rock';
-    playRound();
-});
-
-paperbtn.addEventListener('click', function() {
-    playerSelection = 'paper';
-    playRound();
-});
-
-scissorsbtn.addEventListener('click', function() {
-    playerSelection = 'scissors';
-    playRound();
-});
+} */
